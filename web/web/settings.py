@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_mongoengine',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +50,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+)
+
+AUTH_USER_MODEL = 'django_mongoengine.mongo_auth.models.MongoUser'
+
+AUTHENTICATION_BACKENDS = (
+    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
 )
 
 ROOT_URLCONF = 'web.urls'
@@ -76,11 +84,21 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.dummy',
     }
 }
+MONGODB_DATABASES = {
+    "default": {
+        "name": 'richer_web',
+        "host": 'localhost',
+        "password": '',
+        "username": '',
+        "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+    },
+}
 
+SESSION_ENGINE = 'django_mongoengine.sessions'
+SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
