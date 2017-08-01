@@ -1,6 +1,10 @@
 # requirement the lauch the classficiation web service
 # django1.8 so it works with django-mongoengine
+# not using django mongodb backend engine because it only works with django 1.5
+# which has security issues
 django==1.8
+# TODO: current we are using the dev version as we have no choice
+# we may want to for the repo to stablize it
 git+https://github.com/MongoEngine/django-mongoengine
 mock==1.3.0
 django-simple-history==1.6.3
