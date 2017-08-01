@@ -6,6 +6,7 @@ prerequisites - make sure you have the following installed
 1.python 2.7
 2.pip 1.2.1
 3.virtualenv
+4.mongodb 3.4.6
 
 then following these steps to create a virtual python env and install necessary dependencies
 1.`virtualenv venv`
