@@ -5,3 +5,4 @@ __pycache__/
 *$py.class
 web/venv/
 web/client-app/node_modules/
+web/client-app/dist/
