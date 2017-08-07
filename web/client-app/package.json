@@ -1,0 +1,12 @@
+{
+  "name": "client-app",
+  "version": "1.0.0",
+  "description": "richer front end",
+  "author": "Lei Yao",
+  "license": "MIT",
+  "dependencies": {
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "webpack": "3.4.1"
+  }
+}
