@@ -25,6 +25,8 @@ SECRET_KEY = '%*1&9+a*#jznh3jn%_qm)cu(97b!s9@%y3e@vuj=7n+(qrbe2q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+URL_PREFIX = "http://localhost:8000"
+
 ALLOWED_HOSTS = []
 
 
@@ -41,6 +43,8 @@ INSTALLED_APPS = (
     'django_mongoengine',
     'django_mongoengine.mongo_auth',
     'django_mongoengine.mongo_admin',
+
+    'accounts',
 
 )
 
@@ -66,7 +70,9 @@ ROOT_URLCONF = 'web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
