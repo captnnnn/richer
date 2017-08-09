@@ -6,4 +6,5 @@ urlpatterns = [
     # url(r'^$', 'web.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^dashboard/$', 'accounts.views.dashboard'),
 ]
