@@ -7,6 +7,7 @@ module.exports = {
 		path: path.resolve('../static/client-app-dist')
 	},
 	module: {
+		// TODO: add uglify & compress for PROD
 		rules: [
 			{
 				test: /\.js$/,
