@@ -1,5 +1,7 @@
+{% extends "base.html" %}
 {% block content %}
-	<div>
-		<h2> This is the  index of client
-	</div>
+	<div id="appRoot"></div>
+{% endblock %}
+{% block extrajs %}
+	<script src="/static/client-app-dist/bundle.js"></script>
 {% endblock %}
