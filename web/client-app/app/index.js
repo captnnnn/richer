@@ -1,14 +1,17 @@
 const mountNode = window.document.getElementById('appRoot');
 
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import './main.css';
+
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
 import ProfileIndex from './profile/index';
+
 
 const Home = () => (
   <div>
