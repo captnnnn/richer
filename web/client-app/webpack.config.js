@@ -10,6 +10,14 @@ const extractCSS = new ExtractTextPlugin({
 	allChunks: true,
 });
 
+const sassLoaders = [
+	'css-loader',
+	'autoprefixer-loader',
+	'sass-loader',
+	{
+	loader: 'sass-loader',
+	},
+];
 module.exports = {
 	entry: './app/index.js',
 	output: {
@@ -29,11 +37,17 @@ module.exports = {
 					}
 				}
 			},
+			// {
+			// 	test: /\.css$/,
+			// 	exclude: /(node_modules|bower_components)/,
+			// 	// Note: dont know why but using style loader here causes errors
+			// 	use: extractCSS.extract(['css-loader']),
+			// },
 			{
-				test: /\.css$/,
+				test: /\.scss$/,
 				exclude: /(node_modules|bower_components)/,
 				// Note: dont know why but using style loader here causes errors
-				use: extractCSS.extract(['css-loader']),
+				use: extractCSS.extract(sassLoaders),
 			},
 		],
 	},

@@ -2,7 +2,7 @@ const mountNode = window.document.getElementById('appRoot');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './main.css';
+import './main.scss';
 
 import {
   BrowserRouter as Router,
