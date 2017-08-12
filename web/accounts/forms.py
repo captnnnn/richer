@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm
 
 class UserEmail(forms.EmailField):
 	def clean(self, value):
@@ -24,3 +25,8 @@ class UserRegistrationForm(forms.Form):
 	tos = forms.BooleanField(widget=forms.CheckboxInput(),
 							 label=(u'I have read and agree to the Terms of Service'),
 							 error_messages={ 'required': ("You must agree to the terms to register") })
+
+
+class UserAuthenticationForm(AuthenticationForm):
+	username = forms.CharField(widget=forms.TextInput(attrs={ 'placeholder': u"Email" }), max_length=50)
+	password = forms.CharField(widget=forms.PasswordInput(attrs={ 'placeholder': u"Password" }), label="Password")

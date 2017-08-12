@@ -1,0 +1,29 @@
+{% extends "base_anonymous.html" %}
+{% block content %}
+	<div class = "row">
+		<div class = "col-xs-6 col-xs-offset-3 text-center">
+			<h2> login </h2>
+		</div>
+	</div>
+	<div class = "row text-center">
+		<div class = "col-xs-6 col-xs-offset-3">
+			<form id="register_form" method="post" action="" autocomplete="off" novalidate>
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1">
+						{{ form.username}}
+						<p>{{form.username.errors|join:"<br/>"}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1">
+						{{ form.password}}
+						<p>{{form.password.errors|join:"<br/>"}}</p>
+					</div>
+				</div>
+				<p>{{form.non_field_errors|join:"<br/>"}}</p>
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	</div>
+{% endblock %}
