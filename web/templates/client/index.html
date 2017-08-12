@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block extrahead %}
+	<script src="/static/js/ajax_setup.js"></script>
 	<!-- internal styles -->
 	<link rel="stylesheet" href="/static/client-app-dist/styles.css">
+
+	<!-- NOTE: ajax calls are actually pulling csrf token from cookie rather than this one -->
 	{% csrf_token %}
 
 {% endblock %}
