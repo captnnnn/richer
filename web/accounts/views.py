@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .services import AccountService
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login(request):
@@ -14,7 +15,7 @@ def register(request):
 	if request.method == 'POST':
 		form = UserRegistrationForm(request.POST)
 		if form.is_valid():
-			AccountService().create(
+			AccountService().createAccount(
 				username=form.cleaned_data['email'],
 				password=form.cleaned_data['password'],
 				email=form.cleaned_data['email'],
@@ -33,6 +34,6 @@ def register(request):
 		'form': form,
 	})
 
-# Create your views here.
+@login_required
 def dashboard(request):
 	return render(request, 'client/index.html', {})

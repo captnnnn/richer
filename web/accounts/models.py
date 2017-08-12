@@ -4,5 +4,6 @@ from django_mongoengine.mongo_auth.models import User
 # Create your models here.
 
 class UserProfile(Document):
+	firstName = fields.StringField(verbose_name="First Name", max_length=255)
+	lastName = fields.StringField(verbose_name="Last Name", max_length=255)
 	user = fields.ReferenceField(User)
-	url = fields.URLField(max_length=255, null=True, verbose_name='URL')

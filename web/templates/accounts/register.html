@@ -32,6 +32,12 @@
 						<p>{{form.password.errors|join:"<br/>"}}</p>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1">
+						{{form.tos.label}} {{ form.tos }}
+						<p>{{form.tos.errors|join:"<br/>"}}</p>
+					</div>
+				</div>
 				<input type="submit" value="Submit" />
 			</form>
 		</div>

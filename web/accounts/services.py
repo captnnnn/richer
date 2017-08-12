@@ -3,14 +3,16 @@ from .models import UserProfile
 class AccountService(object):
 	def createAccount(self, username, password, email, firstName, lastName):
 		userModel = get_user_model()
-		user = userModel(
+		user = userModel._default_manager.create_user(
 			username=username,
 			password=password,
-			email=email,
-			firstName=firstName,
-			lastName=lastName
+			email=email
 		)
 		user.save()
-		profile = UserProfile(user=user)
+		profile = UserProfile(
+			firstName=firstName,
+			lastName=lastName,
+			user=user
+		)
 		profile.save()
 		return	user, profile
