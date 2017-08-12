@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 {% block container %}
-	<h2> annoynmouse</h2>
+	{% block header %}
+		<h2>Richer Header</h2>
+	{% endblock %}
+	{% block content %}{% endblock %}
+	{% block footer%}
+		<h2>Richer Footer</h2>
+	{% endblock %}
 {% endblock %}
