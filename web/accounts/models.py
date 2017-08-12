@@ -5,3 +5,4 @@ from django_mongoengine.mongo_auth.models import User
 
 class UserProfile(Document):
 	user = fields.ReferenceField(User)
+	url = fields.URLField(max_length=255, null=True, verbose_name='URL')
