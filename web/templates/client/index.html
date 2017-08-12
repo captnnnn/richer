@@ -2,7 +2,10 @@
 {% block extrahead %}
 	<!-- internal styles -->
 	<link rel="stylesheet" href="/static/client-app-dist/styles.css">
+	{% csrf_token %}
+
 {% endblock %}
+
 {% block container %}
 	<div id="appRoot"></div>
 {% endblock %}
