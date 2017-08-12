@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import UserRegistrationForm
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from .services import AccountService
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -33,3 +34,8 @@ def register(request):
 @login_required
 def dashboard(request):
 	return render(request, 'client/index.html', {})
+
+
+@login_required
+def ajaxTest(request):
+	return JsonResponse({'res': 'success'})
