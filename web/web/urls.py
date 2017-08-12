@@ -6,4 +6,5 @@ urlpatterns = [
 
 	# we don't adding $ on purpose, so the react route still works when user refersh the page
 	url(r'^dashboard/', 'accounts.views.dashboard'),
+	url(r'^ajaxTest/', 'accounts.views.ajaxTest'),
 ]
