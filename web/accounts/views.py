@@ -7,10 +7,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def login(request):
-	return render(request, 'base_anonymous.html', {})
-
 def register(request):
 	if request.method == 'POST':
 		form = UserRegistrationForm(request.POST)
