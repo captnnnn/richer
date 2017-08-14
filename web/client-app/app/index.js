@@ -10,6 +10,13 @@ import {
   Link
 } from 'react-router-dom';
 import ProfileIndex from './profile/index';
+import {
+  ApolloClient,
+  gql,
+  graphql,
+  ApolloProvider,
+} from 'react-apollo';
+
 
 
 const Home = () => (
@@ -17,28 +24,62 @@ const Home = () => (
     <h2>Home</h2>
   </div>
 );
-class UserList extends React.Component {
+
+
+const client = new ApolloClient();
+
+class UserProfileList extends React.Component {
   render () {
-    return <h2> Users </h2>
+       let messageToShow = (<p> success </p>);
+
+       if (this.props.data.loading) {
+         messageToShow = (<p> Loading </p>);
+       }
+       if (this.props.data.error) {
+         messageToShow = (<p> error: {this.props.data.error.message} </p>);
+       }
+       return (
+          <div>
+             <h2> Users</h2>
+             {messageToShow}
+          </div>
+        )
+
+      return <p> success</p>
   }
 };
+
+const userProfileListQuery = gql`
+   query UserListQuery {
+     UserProfile {
+       id,
+       firstName,
+       lastName,
+     }
+   }
+`;
+const UserProfileListWithData = graphql(userProfileListQuery)(UserProfileList);
+
+
 const BasicExample = () => (
   <Router basename='/dashboard'>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
-        <li><a href="/accounts/logout/">Logout</a></li>
-      </ul>
-
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/profile" component={ProfileIndex}/>
+    <ApolloProvider client={client}>
       <div>
-        <UserList />
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
+          <li><a href="/accounts/logout/">Logout</a></li>
+        </ul>
+
+        <hr/>
+
+        <Route exact path="/" component={Home}/>
+        <Route path="/profile" component={ProfileIndex}/>
+        <div>
+          <UserProfileListWithData />
+        </div>
       </div>
-    </div>
+    </ApolloProvider>
   </Router>
 );
 
