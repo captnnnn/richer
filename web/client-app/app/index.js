@@ -18,15 +18,33 @@ import {
 } from 'react-apollo';
 
 
+// -- Start Mock Data ----
+import {
+  makeExecutableSchema,
+  addMockFunctionsToSchema
+} from 'graphql-tools';
+ import { mockNetworkInterfaceWithSchema } from 'apollo-test-utils';
+const typeDefs = `
+    type UserProfile {
+       id: ID!
+       firstName: String
+       lastNmae: String
+    }
+    type Query {
+       userProfiles: [UserProfile]
+    }
+`;
+const schema = makeExecutableSchema({ typeDefs });
+addMockFunctionsToSchema({ schema });
+const mockNetworkInterface = mockNetworkInterfaceWithSchema({ schema });
+const client = new ApolloClient({
+   networkInterface: mockNetworkInterface,
+ });
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+// -- end Mock Data
 
-
-const client = new ApolloClient();
+// -- START Graphql  --
+//const client = new ApolloClient();
 
 class UserProfileList extends React.Component {
   render () {
@@ -51,7 +69,7 @@ class UserProfileList extends React.Component {
 
 const userProfileListQuery = gql`
    query UserListQuery {
-     UserProfile {
+     userProfiles {
        id,
        firstName,
        lastName,
@@ -59,6 +77,14 @@ const userProfileListQuery = gql`
    }
 `;
 const UserProfileListWithData = graphql(userProfileListQuery)(UserProfileList);
+// END Graphql
+
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
 
 
 const BasicExample = () => (
