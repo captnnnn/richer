@@ -17,6 +17,11 @@ const Home = () => (
     <h2>Home</h2>
   </div>
 );
+class UserList extends React.Component {
+  render () {
+    return <h2> Users </h2>
+  }
+};
 const BasicExample = () => (
   <Router basename='/dashboard'>
     <div>
@@ -30,6 +35,9 @@ const BasicExample = () => (
 
       <Route exact path="/" component={Home}/>
       <Route path="/profile" component={ProfileIndex}/>
+      <div>
+        <UserList />
+      </div>
     </div>
   </Router>
 );
