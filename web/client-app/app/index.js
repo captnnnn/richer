@@ -28,7 +28,7 @@ const typeDefs = `
     type UserProfile {
        id: ID!
        firstName: String
-       lastNmae: String
+       lastName: String
     }
     type Query {
        userProfiles: [UserProfile]
@@ -55,6 +55,9 @@ class UserProfileList extends React.Component {
        }
        if (this.props.data.error) {
          messageToShow = (<p> error: {this.props.data.error.message} </p>);
+       }
+       if (this.props.data.userProfiles) {
+         messageToShow = this.props.data.userProfiles.map(profile => <li key={profile.id}>{profile.firstName}</li>)
        }
        return (
           <div>
