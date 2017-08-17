@@ -28,4 +28,4 @@ class Query(graphene.AbstractType):
 	allUserProfiles = graphene.List(UserProfileType)
 
 	def resolve_allUserProfiles(self, args, context, info):
-		return UserProfile.objects.all()
+		return UserProfile.objects.filter(user=context.user)
