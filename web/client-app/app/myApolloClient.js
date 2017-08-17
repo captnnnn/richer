@@ -54,7 +54,6 @@ function setDefaultHeaders(req) {
     req.options.headers['X-PAGEUrl'] = window.location.href;
     req.options.headers['X-AJAXToken'] = ajaxToken;
   }
-  console.log('req.options.headers', req.options.headers);
 }
 
 networkInterface.use([
