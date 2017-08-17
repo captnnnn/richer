@@ -17,7 +17,6 @@ import {
   ApolloProvider,
 } from 'react-apollo';
 
-// -- START Graphql  --
 
 class UserProfileList extends React.Component {
   render () {
@@ -29,8 +28,8 @@ class UserProfileList extends React.Component {
        if (this.props.data.error) {
          messageToShow = (<p> error: {this.props.data.error.message} </p>);
        }
-       if (this.props.data.userProfiles) {
-         messageToShow = this.props.data.userProfiles.map(profile => <li key={profile.id}>{profile.firstName}</li>)
+       if (this.props.data.allUserProfiles) {
+         messageToShow = this.props.data.allUserProfiles.map(profile => <li key={profile.firstName}>{profile.firstName}</li>)
        }
        return (
           <div>
@@ -38,15 +37,12 @@ class UserProfileList extends React.Component {
              {messageToShow}
           </div>
         )
-
-      return <p> success</p>
   }
 };
 
 const userProfileListQuery = gql`
    query UserListQuery {
-     userProfiles {
-       id,
+     allUserProfiles {
        firstName,
        lastName,
      }
