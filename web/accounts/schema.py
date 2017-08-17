@@ -25,7 +25,7 @@ class UserProfileType(graphene.ObjectType):
 # abstractType on purpse so it can be includded in the final query schema
 class Query(graphene.AbstractType):
 
-	allUserProfiles = graphene.List(UserProfileType)
+	myProfile = graphene.Field(UserProfileType)
 
-	def resolve_allUserProfiles(self, args, context, info):
-		return UserProfile.objects.filter(user=context.user)
+	def resolve_myProfile(self, args, context, info):
+		return UserProfile.objects.get(user=context.user)

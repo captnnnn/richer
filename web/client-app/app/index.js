@@ -9,47 +9,11 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import ProfileIndex from './profile/index';
 import apolloClient from './myApolloClient';
+import UserProfile from './profile/index';
 import {
-  gql,
-  graphql,
   ApolloProvider,
 } from 'react-apollo';
-
-
-class UserProfileList extends React.Component {
-  render () {
-       let messageToShow = (<p> success </p>);
-
-       if (this.props.data.loading) {
-         messageToShow = (<p> Loading </p>);
-       }
-       if (this.props.data.error) {
-         messageToShow = (<p> error: {this.props.data.error.message} </p>);
-       }
-       if (this.props.data.allUserProfiles) {
-         messageToShow = this.props.data.allUserProfiles.map(profile => <li key={profile.firstName}>{profile.firstName}</li>)
-       }
-       return (
-          <div>
-             <h2> Users</h2>
-             {messageToShow}
-          </div>
-        )
-  }
-};
-
-const userProfileListQuery = gql`
-   query UserListQuery {
-     allUserProfiles {
-       firstName,
-       lastName,
-     }
-   }
-`;
-const UserProfileListWithData = graphql(userProfileListQuery)(UserProfileList);
-// END Graphql
 
 
 const Home = () => (
@@ -72,10 +36,7 @@ const BasicExample = () => (
         <hr/>
 
         <Route exact path="/" component={Home}/>
-        <Route path="/profile" component={ProfileIndex}/>
-        <div>
-          <UserProfileListWithData />
-        </div>
+        <Route path="/profile" component={UserProfile}/>
       </div>
     </ApolloProvider>
   </Router>
