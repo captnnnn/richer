@@ -10,41 +10,14 @@ import {
   Link
 } from 'react-router-dom';
 import ProfileIndex from './profile/index';
+import apolloClient from './myApolloClient';
 import {
-  ApolloClient,
   gql,
   graphql,
   ApolloProvider,
 } from 'react-apollo';
 
-
-// // -- Start Mock Data ----
-// import {
-//   makeExecutableSchema,
-//   addMockFunctionsToSchema
-// } from 'graphql-tools';
-//  import { mockNetworkInterfaceWithSchema } from 'apollo-test-utils';
-// const typeDefs = `
-//     type UserProfile {
-//        id: ID!
-//        firstName: String
-//        lastName: String
-//     }
-//     type Query {
-//        userProfiles: [UserProfile]
-//     }
-// `;
-// const schema = makeExecutableSchema({ typeDefs });
-// addMockFunctionsToSchema({ schema });
-// const mockNetworkInterface = mockNetworkInterfaceWithSchema({ schema });
-// const client = new ApolloClient({
-//    networkInterface: mockNetworkInterface,
-//  });
-
-// // -- end Mock Data
-
 // -- START Graphql  --
-const client = new ApolloClient();
 
 class UserProfileList extends React.Component {
   render () {
@@ -92,7 +65,7 @@ const Home = () => (
 
 const BasicExample = () => (
   <Router basename='/dashboard'>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <div>
         <ul>
           <li><Link to="/">Home</Link></li>
