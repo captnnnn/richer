@@ -9,7 +9,11 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import ProfileIndex from './profile/index';
+import apolloClient from './myApolloClient';
+import UserProfile from './profile/index';
+import {
+  ApolloProvider,
+} from 'react-apollo';
 
 
 const Home = () => (
@@ -17,20 +21,24 @@ const Home = () => (
     <h2>Home</h2>
   </div>
 );
+
+
 const BasicExample = () => (
   <Router basename='/dashboard'>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
-        <li><a href="/accounts/logout/">Logout</a></li>
-      </ul>
+    <ApolloProvider client={apolloClient}>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
+          <li><a href="/accounts/logout/">Logout</a></li>
+        </ul>
 
-      <hr/>
+        <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/profile" component={ProfileIndex}/>
-    </div>
+        <Route exact path="/" component={Home}/>
+        <Route path="/profile" component={UserProfile}/>
+      </div>
+    </ApolloProvider>
   </Router>
 );
 

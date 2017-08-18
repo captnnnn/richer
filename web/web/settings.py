@@ -24,7 +24,7 @@ SECRET_KEY = '%*1&9+a*#jznh3jn%_qm)cu(97b!s9@%y3e@vuj=7n+(qrbe2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+ENV = 'DEV'
 URL_PREFIX = "http://localhost:8000"
 
 ALLOWED_HOSTS = []
@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django_mongoengine',
     'django_mongoengine.mongo_auth',
     'django_mongoengine.mongo_admin',
+    'graphene_django',
 
     'accounts',
 
