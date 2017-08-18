@@ -5,6 +5,10 @@ import {
 } from 'react-apollo';
 
 class UserProfile extends React.Component {
+	handleClick(e) {
+		console.log('this is:' + e);
+	}
+
 	render() {
 		let messageToShow = (<p> No Data.</p>);
 		if (this.props.data.loading) {
@@ -26,7 +30,11 @@ class UserProfile extends React.Component {
 			<div>
 				<h2> Profile </h2>
 				{messageToShow}
+				 <button onClick={(e) => this.handleClick(e)}>
+					Click me
+				</button>
 			</div>
+
 		)
 	}
 };
