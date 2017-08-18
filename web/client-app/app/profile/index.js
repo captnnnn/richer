@@ -13,12 +13,23 @@ class UserProfile extends React.Component {
 	}
 
 	handleClick(action) {
-		if (this.state.isEditing) {
+		if (action == 'edit') {
+			this.setState({
+				isEditing: true,
+				firstName: this.props.data.myProfile.firstName,
+				lastName: this.props.data.myProfile.lastName,
+			});
+		}
+		else if  (action == 'cancel') {
 			this.setState({isEditing: false});
 		}
-		else {
-			this.setState({isEditing: true});
-		}
+	}
+
+	handleTextInputChange(event) {
+		const target = event.target;
+		this.setState({
+			[target.name]: target.value,
+		});
 	}
 
 	render() {
@@ -35,22 +46,26 @@ class UserProfile extends React.Component {
 			return (
 				<div>
 					{header}
-					 <button onClick={(e) => this.handleClick(e)}>
-						Save
+					 <button onClick={(e) => this.handleClick('cancel')}>
+						Cancel
 					</button>
-					<p> Edit first Name: {profile.firstName} </p>
-					<p> Edit last Name: {profile.lastName} </p>
+					<label>First Name:
+						<input type="text" name="firstName" value={this.state.firstName} onChange={(e) => this.handleTextInputChange(e)} />
+					</label>
+					<label>Last Name:
+						<input type="text" name="lastName" value={this.state.lastName} onChange={(e) => this.handleTextInputChange(e)} />
+					</label>
 				</div>
 			);
 		}
 		return (
 			<div>
 				{header}
-				 <button onClick={(e) => this.handleClick(e)}>
+				 <button onClick={(e) => this.handleClick('edit')}>
 					Edit
 				</button>
-				<p> first Name: {profile.firstName} </p>
-				<p> last Name: {profile.lastName} </p>
+				<p> First Name: {profile.firstName} </p>
+				<p> Last Name: {profile.lastName} </p>
 			</div>
 		);
 
