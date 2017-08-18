@@ -1,5 +1,5 @@
 # Richer Website
-The webiste to manage users, payments and interacting with the actual NLP services 
+The webiste to manage users, payments and interacting with the actual NLP services
 
 # Setup the dev environment option 1 - local env
 prerequisites - make sure you have the following installed
@@ -15,10 +15,17 @@ then following these steps to create a virtual python env and install necessary 
 2. `source venv/bin/activate/`
 3. `pip install -r requirements.txt`
 
+
+then following steps to setup frontend app
+1. `cd client-app`
+2. `yarn`
+3. `.build.sh`
+
 # TODO: run db and config db settings
 
-
+then run server
+1. `./runserver.sh`
 
 Catches
-1. When install yarn, if running into "SyntaxError: Use of const in strict mode" upon running `yarn version`. It means you prob have a node installed on your local before hand. You will need to run `brew link --overwrite node` to use the latest node installed by brew. 
+1. When install yarn, if running into "SyntaxError: Use of const in strict mode" upon running `yarn version`. It means you prob have a node installed on your local before hand. You will need to run `brew link --overwrite node` to use the latest node installed by brew.
 2. if you see "some_path is not writable " upon running `brew link --overwrite node`. it means you dont have permission to edit that path. Run `sudo chown -R $USER:admin some_path` to get permission.
